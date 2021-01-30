@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<users>
+    <item key="0">
+        <id>1</id>
+        <login>henry.dunant</login>
+        <firstName>Henry</firstName>
+        <lastName>Dunant</lastName>
+    </item>
+    <item key="1">
+        <id>2</id>
+        <login>bertha.suttner</login>
+        <firstName>Bertha von</firstName>
+        <lastName>Suttner</lastName>
+    </item>
+    <item key="2">
+        <id>3</id>
+        <login>jane.doe</login>
+        <firstName>Jane</firstName>
+        <lastName>Doe</lastName>
+    </item>
+    <item key="3">
+        <id>4</id>
+        <login>john.doe</login>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+    </item>
+</users>
