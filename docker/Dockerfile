@@ -5,6 +5,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');"
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN apt update && apt install --yes libpq-dev git unzip && apt clean
 
-RUN apt update && apt install --yes git unzip && apt clean
+RUN docker-php-ext-install pdo pdo_pgsql && pecl install xdebug && docker-php-ext-enable xdebug

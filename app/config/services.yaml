@@ -37,6 +37,10 @@ services:
             $path:
                 xml
 
+    # Use this line to use the DatabaseStorage adapter
+    # app.dataStorageAdapter:
+    #    class: App\Data\DatabaseStorageAdapter
+
     app.dataPersister:
         class: App\Data\DataPersister
         arguments:

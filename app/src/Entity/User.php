@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
 
 #[ApiResource(
     description: "An example user entity",
@@ -20,8 +22,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
     denormalizationContext: ["groups" => ["update_user", "create_user"]],
     normalizationContext: ["groups" => ["view_user"]]
 )]
+/**
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="public.user")
+ */
 class User implements IdInterface {
 
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     */
     #[ApiProperty(
         description: "Unique user identifier",
         identifier: true
@@ -29,14 +39,23 @@ class User implements IdInterface {
     #[Groups(["view_user"])]
     protected ?string $id = null;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     #[ApiProperty(description: "User login")]
     #[Groups(["view_user", "create_user"])]
     protected string $login = "";
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     #[ApiProperty(description: "Users first name")]
     #[Groups(["view_user", "create_user", "update_user"])]
     protected ?string $firstName = null;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     #[ApiProperty(description: "Users last name")]
     #[Groups(["view_user", "create_user", "update_user"])]
     protected ?string $lastName = null;

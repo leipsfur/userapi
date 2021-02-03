@@ -16,3 +16,18 @@ services:
       PHP_IDE_CONFIG: "serverName=docker"
     working_dir: /var/www/html
     command: php -S 0.0.0.0:8000 -t public
+
+
+  db:
+    image: postgres:13.1
+    environment:
+      POSTGRES_USER: userapi
+      POSTGRES_PASSWORD: userapi
+      LANG: en_US.utf8
+    volumes:
+      - db_pg_userapi:/var/lib/postgresql/data:delegated
+    ports:
+      - 15432:5432
+
+volumes:
+  db_pg_userapi:
