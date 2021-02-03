@@ -40,6 +40,26 @@ After this the application is ready to use. You can run the tests with the follo
 docker-compose exec app bin/phpunit tests
 ```
 
+#### Xdebug
+
+To use xdebug you have to create a `docker-compose.override.yaml` with the required xdebug configuration
+
+The following configuration is useful for PHPStorm. You have to update the client_host ip to the 
+host ip that hosts xdebug. The serverName in PHP_IDE_CONFIG is used by PHPStorm to store the
+file mappings.
+
+```yaml
+---
+version: '3'
+services:
+  app:
+    environment:
+      XDEBUG_MODE: "debug"
+      XDEBUG_SESSION: "1"
+      XDEBUG_CONFIG: "mode=debug client_host=172.25.149.239 client_port=9003 start_with_request=yes"
+      PHP_IDE_CONFIG: "serverName=docker"
+```
+
 ### Without docker
 
 Install dependencies: 
